@@ -1,0 +1,42 @@
+# TIDP experiment configuration template.
+# Replace dataset/model paths for the target machine.
+method:
+  name: TIDP
+  internal_legacy_key: icddp
+  intent_categories:
+    - content_browsing
+    - form_selection
+    - information_input
+    - button_interaction
+
+environment:
+  python: "3.11"
+  gpu: "NVIDIA RTX A6000 40GB"
+  random_seed: 42
+
+models:
+  intent_classifier: qwen2.5:3b
+  action_decision_primary: gpt-4.1-mini
+  action_decision_secondary: deepseek-v4-flash
+  sentence_transformer: all-MiniLM-L6-v2
+  cross_encoder: ms-marco-MiniLM-L-6-v2
+
+evaluation:
+  token_encoding: cl100k_base
+  context_limit_tokens: 8000
+  reserved_task_ratio: 0.2
+  splits:
+    - test_cross_task
+    - test_cross_website
+    - test_cross_domain
+
+paths:
+  dataset_root: /path/to/Mind2Web
+  sentence_transformer: /path/to/models/all-MiniLM-L6-v2
+  cross_encoder: /path/to/models/ms-marco-MiniLM-L-6-v2
+  results: ../results
+  figures: ../figures
+
+sources:
+  mind2web: https://osu-nlp-group.github.io/Mind2Web/
+  sentence_transformer: https://hf-mirror.com/sentence-transformers/all-MiniLM-L6-v2/tree/main
