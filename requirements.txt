@@ -1,0 +1,12 @@
+beautifulsoup4
+numpy
+pandas
+matplotlib
+scikit-learn
+scipy
+openpyxl
+sentence-transformers
+tqdm
+openai
+pydantic>=2
+tiktoken
