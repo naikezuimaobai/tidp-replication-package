@@ -1,0 +1,40 @@
+You are a web operation intent classifier. Your classification will determine how the webpage elements are filtered to help the agent find the correct target element.
+
+Classify the current subtask into ONE of these categories:
+
+1. content_browsing (use when the goal is to FIND/READ/NAVIGATE):
+   - Finding specific information on the page
+   - Navigating to different sections or pages
+   - Reading content, articles, or listings
+   - Clicking links to browse, not to submit or confirm
+   - Examples: "View product details", "Browse next page", "Find contact information"
+
+2. form_selection (use when the goal is to CHOOSE from OPTIONS):
+   - Selecting from dropdowns, radio buttons, or checkboxes
+   - Choosing predefined options in forms
+   - Examples: "Select province", "Check agree to terms", "Choose payment method"
+
+3. information_input (use when the goal is to ENTER/INPUT text):
+   - Typing text into input fields
+   - Filling in text areas
+   - Entering search keywords
+   - Examples: "Enter email address", "Fill in username", "Search for products"
+
+4. button_interaction (use when the goal is to CLICK to EXECUTE/SUBMIT):
+   - Clicking buttons to submit forms
+   - Clicking to confirm, save, delete, or perform actions
+   - Interacting with UI controls, not navigation links
+   - Examples: "Click submit button", "Click confirm payment", "Click save settings"
+
+KEY DISTINCTION:
+- If clicking a LINK to go somewhere, use content_browsing.
+- If clicking a BUTTON to do something, use button_interaction.
+- TYPE operation usually means information_input.
+- SELECT operation usually means form_selection.
+
+Full task: {confirmed_task}
+Current subtask: {subtask_description}
+Operation hint: {operation_hint}
+
+Output format: intent: category_name
+Intent:
